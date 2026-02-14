@@ -1,5 +1,5 @@
-// Flores emoji flotando
-const flores = ['🌹','🌸','🌺','🌷','🌼','💐'];
+// 🌸 Flores emoji (igual que tu versión)
+const flores = ['🌹', '🌸', '🌺', '🌷', '🌼'];
 
 setInterval(() => {
     const flor = document.createElement('div');
@@ -11,24 +11,15 @@ setInterval(() => {
     document.body.appendChild(flor);
 }, 500);
 
-
 const btnNo = document.getElementById('btnNo');
 const btnSi = document.getElementById('btnSi');
 const inicial = document.getElementById('contenido-inicial');
 const final = document.getElementById('mensajeFinal');
-const carta = document.getElementById('carta');
-const musica = document.getElementById('musica');
 
-// Abrir carta
-carta.addEventListener('click', () => {
-    carta.style.display = "none";
-    inicial.style.display = "block";
-    musica.play();
-});
-
-// Botón No imposible de tocar (funciona en celular)
+// 🔥 Botón No imposible de tocar (PC + celular)
 function moverBoton() {
     const container = document.querySelector('.buttons');
+
     const maxX = container.clientWidth - btnNo.offsetWidth;
     const maxY = container.clientHeight - btnNo.offsetHeight;
 
@@ -40,19 +31,21 @@ function moverBoton() {
 }
 
 btnNo.addEventListener('mouseover', moverBoton);
-btnNo.addEventListener('touchstart', function(e){
+
+// Importante para celular
+btnNo.addEventListener('touchstart', function(e) {
     e.preventDefault();
     moverBoton();
 });
 
-// Botón Sí
+// 💖 Botón Sí
 btnSi.addEventListener('click', () => {
     inicial.style.display = 'none';
     final.style.display = 'block';
 
     confetti({
-        particleCount: 200,
-        spread: 90,
+        particleCount: 150,
+        spread: 70,
         origin: { y: 0.6 }
     });
 });
