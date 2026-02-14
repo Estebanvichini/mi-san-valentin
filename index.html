@@ -1,40 +1,46 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¿Rosita, Queres ser mi San Valentín?</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+<title>Para Rosita ❤️</title>
 
-    <!-- Confetti -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<audio id="musica" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/10/30/audio_6e6d6bda58.mp3?filename=romantic-love-115764.mp3" type="audio/mpeg">
+</audio>
+
+<canvas id="backgroundCanvas"></canvas>
 <canvas id="flowerCanvas"></canvas>
 
-<div id="main-card" class="container">
-    
-    <div id="contenido-inicial">
-        <img src="https://media2.giphy.com/media/92YG8KKSjYhMc/giphy.gif" class="main-img">
-        <h1>¿Rosita, querés ser mi San Valentín?</h1>
+<div id="envelope">
+  <div class="flap"></div>
+  <div class="letter">
 
-        <div class="buttons-container">
-            <button id="btnSi">Sí 💖</button>
-            <button id="btnNo">No</button>
-        </div>
-    </div>
+      <div id="contenido-inicial">
+          <img src="https://media2.giphy.com/media/92YG8KKSjYhMc/giphy.gif" class="main-img">
+          <h1 id="typedText"></h1>
 
-    <div id="mensajeFinal">
-        <img src="https://media2.giphy.com/media/92YG8KKSjYhMc/giphy.gif" class="main-img">
-        <h2>Te amo mucho mulher mia ❤️</h2>
-        <p>Feliz San Valentín preciosa</p>
-    </div>
+          <div class="buttons-container">
+              <button id="btnSi">Sí 💖</button>
+              <button id="btnNo">No</button>
+          </div>
+      </div>
 
+      <div id="mensajeFinal">
+          <h2>Te amo infinitamente ❤️</h2>
+          <p>Gracias por existir, mi amor.</p>
+      </div>
+
+  </div>
 </div>
 
 <script src="script.js"></script>
