@@ -9,7 +9,6 @@ body {
     height: 100vh;
 }
 
-/* Flores del fondo */
 .flower {
     position: absolute;
     user-select: none;
@@ -30,29 +29,29 @@ body {
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     text-align: center;
-    width: 350px;
-    position: relative; /* ESTO MANTIENE AL BOTÓN ADENTRO */
+    width: 320px;
     min-height: 400px;
+    position: relative; /* Clave para el botón No */
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
 }
 
 .main-img {
     width: 100%;
     border-radius: 15px;
-    margin-bottom: 15px;
 }
 
-h1 { color: #d63384; font-size: 22px; }
+h1 { color: #d63384; font-size: 22px; margin: 20px 0; }
 
 .buttons {
     display: flex;
-    gap: 20px;
-    margin-top: 20px;
-    width: 100%;
     justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 10px;
+    position: relative;
+    min-height: 50px;
 }
 
 button {
@@ -62,20 +61,18 @@ button {
     border-radius: 10px;
     border: none;
     cursor: pointer;
+    width: fit-content;
 }
 
 #btnSi {
     background-color: #ff4d6d;
     color: white;
-    z-index: 11;
 }
 
 #btnNo {
     background-color: #f8f9fa;
     color: #888;
-    position: absolute; /* Importante */
-    bottom: 40px;       /* Lo posiciona abajo a la derecha inicialmente */
-    right: 50px;
+    position: absolute; /* Para que se mueva libremente */
+    right: 50px;       /* Posición inicial */
     transition: 0.1s;
-    z-index: 15;        /* Asegura que esté por encima de todo */
 }
