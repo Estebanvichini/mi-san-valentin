@@ -73,6 +73,9 @@ button {
 #btnNo {
     background-color: #f8f9fa;
     color: #888;
-    position: absolute; /* Se mueve relativo al .container */
+    position: absolute; /* Importante */
+    bottom: 40px;       /* Lo posiciona abajo a la derecha inicialmente */
+    right: 50px;
     transition: 0.1s;
+    z-index: 15;        /* Asegura que esté por encima de todo */
 }
