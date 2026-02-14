@@ -11,10 +11,8 @@ body {
 
 .flower {
     position: absolute;
-    user-select: none;
     z-index: 1;
     animation: aparecerFlor 2.5s ease-out forwards;
-    pointer-events: none;
 }
 
 @keyframes aparecerFlor {
@@ -29,29 +27,25 @@ body {
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     text-align: center;
-    width: 320px;
-    min-height: 400px;
-    position: relative; /* Clave para el botón No */
+    width: 350px;
+    min-height: 450px;
+    position: relative; /* Clave para que el botón No no se salga */
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
 }
 
 .main-img {
-    width: 100%;
+    width: 250px;
+    height: auto;
     border-radius: 15px;
 }
 
-h1 { color: #d63384; font-size: 22px; margin: 20px 0; }
-
-.buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    margin-top: 10px;
+.buttons-container {
+    width: 100%;
+    height: 100px; /* Espacio reservado para los botones */
     position: relative;
-    min-height: 50px;
+    margin-top: 20px;
 }
 
 button {
@@ -61,18 +55,21 @@ button {
     border-radius: 10px;
     border: none;
     cursor: pointer;
-    width: fit-content;
 }
 
 #btnSi {
     background-color: #ff4d6d;
     color: white;
+    position: relative;
+    left: -50px; /* Separado del centro a la izquierda */
 }
 
 #btnNo {
     background-color: #f8f9fa;
     color: #888;
-    position: absolute; /* Para que se mueva libremente */
-    right: 50px;       /* Posición inicial */
-    transition: 0.1s;
+    width: 80px; /* Tamaño fijo para que no crezca */
+    position: absolute; 
+    top: 0;
+    left: 190px; /* Posición inicial a la derecha */
+    transition: all 0.2s ease;
 }
