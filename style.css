@@ -17,45 +17,17 @@ body {
     pointer-events: none;
 }
 
-/* SOBRE */
-#envelope {
+/* Tarjeta */
+.container {
     position: relative;
-    width: 380px;
-    height: 500px;
-    perspective: 1000px;
-}
-
-.flap {
-    position: absolute;
-    width: 100%;
-    height: 50%;
-    background: #ffb6c1;
-    top: 0;
-    transform-origin: top;
-    transition: transform 1s ease;
-    z-index: 5;
-}
-
-.letter {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+    z-index: 10;
     background: white;
+    padding: 30px;
     border-radius: 20px;
     box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-    padding: 30px;
-    box-sizing: border-box;
-    z-index: 1;
-    transform: translateY(50px);
-    transition: transform 1s ease;
-}
-
-#envelope.open .flap {
-    transform: rotateX(180deg);
-}
-
-#envelope.open .letter {
-    transform: translateY(0);
+    width: 350px;
+    min-height: 450px;
+    text-align: center;
 }
 
 .main-img {
@@ -67,15 +39,13 @@ h1, h2 {
     font-family: 'Great Vibes', cursive;
     font-size: 32px;
     color: #d63384;
-    text-align: center;
 }
 
 p {
     font-family: 'Poppins', sans-serif;
-    text-align: center;
 }
 
-/* BOTONES */
+/* Botones */
 .buttons-container {
     width: 100%;
     height: 120px;
@@ -92,31 +62,12 @@ button {
     font-family: 'Poppins', sans-serif;
 }
 
-/* BOTÓN SÍ CON BRILLO */
 #btnSi {
-    background: linear-gradient(45deg, #ff4d88, #ff99cc);
+    background-color: #ff4d88;
     color: white;
     position: absolute;
     left: 40px;
     top: 40px;
-    overflow: hidden;
-}
-
-/* efecto brillo */
-#btnSi::after {
-    content: "";
-    position: absolute;
-    width: 200%;
-    height: 100%;
-    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
-    transform: translateX(-100%);
-    animation: shine 2s infinite;
-}
-
-@keyframes shine {
-    100% {
-        transform: translateX(100%);
-    }
 }
 
 #btnNo {
