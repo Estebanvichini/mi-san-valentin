@@ -1,45 +1,33 @@
 body {
-    background-color: #ffe6e6;
     margin: 0;
+    background: #ffe6f0;
     overflow: hidden;
-    font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
-/* Flores */
-.flower {
-    position: absolute;
-    z-index: 1;
-    animation: aparecerFlor 2.5s ease-out forwards;
-}
-
-h1, h2 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 32px;
- }
-
-@keyframes aparecerFlor {
-    0% { transform: scale(0); opacity: 0; }
-    100% { transform: scale(1); opacity: 0.5; }
+/* Canvas flores */
+#flowerCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    pointer-events: none;
 }
 
 /* Tarjeta */
 .container {
+    position: relative;
     z-index: 10;
     background: white;
     padding: 30px;
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    text-align: center;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
     width: 350px;
     min-height: 450px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    text-align: center;
 }
 
 .main-img {
@@ -47,7 +35,17 @@ h1, h2 {
     border-radius: 15px;
 }
 
-/* Contenedor de botones */
+h1, h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 32px;
+    color: #d63384;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Botones */
 .buttons-container {
     width: 100%;
     height: 120px;
@@ -55,36 +53,36 @@ h1, h2 {
     margin-top: 20px;
 }
 
-/* Botones generales */
 button {
     padding: 10px 20px;
     font-size: 18px;
-    font-weight: bold;
     border-radius: 10px;
     border: none;
     cursor: pointer;
+    font-family: 'Poppins', sans-serif;
 }
 
-/* Botón Sí */
 #btnSi {
-    background-color: #ff4d6d;
+    background-color: #ff4d88;
     color: white;
     position: absolute;
     left: 40px;
     top: 40px;
 }
 
-/* Botón No */
 #btnNo {
-    background-color: #f8f9fa;
-    color: #555;
+    background-color: #eee;
+    color: #666;
     width: 80px;
     position: absolute;
     left: 200px;
     top: 40px;
+    transition: left 0.15s ease, top 0.15s ease;
     touch-action: none;
-    transition: left 0.2s ease, top 0.2s ease;
 }
 
+#mensajeFinal {
+    display: none;
+}
 
 
