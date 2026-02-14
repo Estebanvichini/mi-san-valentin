@@ -17,9 +17,8 @@ const inicial = document.getElementById('contenido-inicial');
 const final = document.getElementById('mensajeFinal');
 const container = document.querySelector('.buttons-container');
 
-// Movimiento del botón No SOLO dentro del área de botones
-btnNo.addEventListener('mouseover', () => {
-    
+// FUNCIÓN PARA MOVER EL BOTÓN
+function moverBoton() {
     const containerWidth = container.clientWidth;
     const containerHeight = container.clientHeight;
 
@@ -31,6 +30,21 @@ btnNo.addEventListener('mouseover', () => {
 
     btnNo.style.left = `${newLeft}px`;
     btnNo.style.top = `${newTop}px`;
+}
+
+// PC (mouse)
+btnNo.addEventListener('mouseenter', moverBoton);
+
+// CELULAR (cuando intenta tocar)
+btnNo.addEventListener('touchstart', function(e) {
+    e.preventDefault(); // evita que lo presione
+    moverBoton();
+});
+
+// Por si acaso intenta hacer click
+btnNo.addEventListener('click', function(e) {
+    e.preventDefault();
+    moverBoton();
 });
 
 // Botón Sí
