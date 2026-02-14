@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    background: linear-gradient(#ffe6f0, #ffd6ec);
+    background: #ffe6f0;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -8,11 +8,12 @@ body {
     height: 100vh;
 }
 
-/* CANVAS */
-canvas {
+/* Canvas flores */
+#flowerCanvas {
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 0;
     pointer-events: none;
 }
 
@@ -41,21 +42,12 @@ canvas {
     height: 100%;
     background: white;
     border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
     padding: 30px;
     box-sizing: border-box;
-    transform: translateY(60px);
+    z-index: 1;
+    transform: translateY(50px);
     transition: transform 1s ease;
-}
-
-#envelope.shake {
-    animation: shake 0.6s ease;
-}
-
-@keyframes shake {
-    0%,100% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    75% { transform: translateX(5px); }
 }
 
 #envelope.open .flap {
@@ -100,7 +92,7 @@ button {
     font-family: 'Poppins', sans-serif;
 }
 
-/* BOTÓN SÍ */
+/* BOTÓN SÍ CON BRILLO */
 #btnSi {
     background: linear-gradient(45deg, #ff4d88, #ff99cc);
     color: white;
@@ -108,14 +100,9 @@ button {
     left: 40px;
     top: 40px;
     overflow: hidden;
-    animation: pulse 2s infinite;
 }
 
-@keyframes pulse {
-    0%,100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-}
-
+/* efecto brillo */
 #btnSi::after {
     content: "";
     position: absolute;
@@ -127,7 +114,9 @@ button {
 }
 
 @keyframes shine {
-    100% { transform: translateX(100%); }
+    100% {
+        transform: translateX(100%);
+    }
 }
 
 #btnNo {
@@ -144,5 +133,3 @@ button {
 #mensajeFinal {
     display: none;
 }
-
-
