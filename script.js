@@ -1,4 +1,4 @@
-// Flores automáticas
+// Generar flores
 const flores = ['🌹', '🌸', '🌺', '🌷', '🌼'];
 setInterval(() => {
     const flor = document.createElement('div');
@@ -8,31 +8,35 @@ setInterval(() => {
     flor.style.top = Math.random() * window.innerHeight + 'px';
     flor.style.fontSize = (Math.random() * 30 + 20) + 'px';
     document.body.appendChild(flor);
-}, 450);
+}, 500);
 
 const btnNo = document.getElementById('btnNo');
 const btnSi = document.getElementById('btnSi');
 const inicial = document.getElementById('contenido-inicial');
 const final = document.getElementById('mensajeFinal');
-const container = document.querySelector('.container');
+const container = document.getElementById('mainContainer');
 
-// Mover el botón "No" dentro de la tarjeta
+// Lógica para que el botón No se mueva SOLO dentro de la tarjeta
 btnNo.addEventListener('mouseover', () => {
-    const containerRect = container.getBoundingClientRect();
-    const btnRect = btnNo.getBoundingClientRect();
+    // Dimensiones de la tarjeta blanca
+    const containerWidth = container.clientWidth;
+    const containerHeight = container.clientHeight;
 
-    // Límites para que no se salga de la tarjeta blanca
-    const maxX = containerRect.width - btnRect.width - 20;
-    const maxY = containerRect.height - btnRect.height - 20;
+    // Dimensiones del botón
+    const btnWidth = btnNo.offsetWidth;
+    const btnHeight = btnNo.offsetHeight;
 
-    const randomX = Math.random() * maxX;
-    const randomY = Math.random() * maxY;
+    // Calcular nuevas posiciones aleatorias (dejando 20px de margen)
+    const newLeft = Math.random() * (containerWidth - btnWidth - 20);
+    const newTop = Math.random() * (containerHeight - btnHeight - 20);
 
-    btnNo.style.left = randomX + 'px';
-    btnNo.style.top = randomY + 'px';
+    // Aplicar la nueva posición
+    btnNo.style.position = 'absolute';
+    btnNo.style.left = `${newLeft}px`;
+    btnNo.style.top = `${newTop}px`;
 });
 
-// Botón Sí
+// Lógica para el botón Sí
 btnSi.addEventListener('click', () => {
     inicial.style.display = 'none';
     final.style.display = 'block';
