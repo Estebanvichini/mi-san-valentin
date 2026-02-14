@@ -5,34 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>¿Rosita, Queres ser mi San Valentín?</title>
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Fuente romántica -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
 
     <!-- Confetti -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<canvas id="flowerCanvas"></canvas>
+<!-- Música -->
+<audio id="musica" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+</audio>
 
 <div id="main-card" class="container">
-    
-    <div id="contenido-inicial">
-        <img src="https://media2.giphy.com/media/92YG8KKSjYhMc/giphy.gif" class="main-img">
+
+    <!-- Carta cerrada -->
+    <div id="carta" class="carta">
+        💌 Tócame
+    </div>
+
+    <!-- Contenido -->
+    <div id="contenido-inicial" style="display:none;">
+        <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHFpdTM4a2pteXZybWttYm1rOGtud29zbDFlNzUxNnl4bmVvcGdmcyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/92YG8KKSjYhMc/giphy.gif" class="main-img">
         <h1>¿Rosita, querés ser mi San Valentín?</h1>
 
-        <div class="buttons-container">
-            <button id="btnSi">Sí 💖</button>
+        <div class="buttons">
+            <button id="btnSi">Sí ❤️</button>
             <button id="btnNo">No</button>
         </div>
     </div>
 
-    <div id="mensajeFinal">
-        <img src="https://media2.giphy.com/media/92YG8KKSjYhMc/giphy.gif" class="main-img">
-        <h2>Te amo mucho mulher mia ❤️</h2>
-        <p>Feliz San Valentín preciosa</p>
+    <div id="mensajeFinal" style="display: none;">
+        <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHFpdTM4a2pteXZybWttYm1rOGtud29zbDFlNzUxNnl4bmVvcGdmcyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/92YG8KKSjYhMc/giphy.gif" class="main-img">
+        <h2>Te amo mucho mujer mía ❤️</h2>
+        <p>Feliz San Valentín preciosa 💕</p>
     </div>
 
 </div>
