@@ -1,78 +1,72 @@
-/* ===== SOBRE CON TEMBLOR ===== */
+/* ====== ABRIR SOBRE ====== */
 
 const envelope = document.getElementById("envelope");
 
 setTimeout(() => {
-    envelope.classList.add("shake");
-}, 400);
-
-setTimeout(() => {
-    envelope.classList.remove("shake");
     envelope.classList.add("open");
-}, 1200);
+}, 800);
 
-/* ===== TEXTO TIPO MAQUINA ===== */
+/* ====== FLORES ====== */
 
-const text = "¿Rosita, querés ser mi San Valentín?";
-const typed = document.getElementById("typedText");
-let i = 0;
+const canvas = document.getElementById("flowerCanvas");
+const ctx = canvas.getContext("2d");
 
-function typeWriter() {
-    if (i < text.length) {
-        typed.innerHTML += text.charAt(i);
-        i++;
-        setTimeout(typeWriter, 60);
-    }
-}
-setTimeout(typeWriter, 1500);
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-/* ===== MÚSICA (requiere interacción en móvil) ===== */
+window.addEventListener("resize", () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
 
-document.body.addEventListener("click", () => {
-    document.getElementById("musica").play();
-}, { once: true });
+class Flower {
+    constructor() { this.reset(); }
 
-/* ===== PARTÍCULAS MÁGICAS ===== */
-
-const bgCanvas = document.getElementById("backgroundCanvas");
-const bgCtx = bgCanvas.getContext("2d");
-
-bgCanvas.width = window.innerWidth;
-bgCanvas.height = window.innerHeight;
-
-class Sparkle {
-    constructor() {
-        this.reset();
-    }
     reset() {
-        this.x = Math.random()*bgCanvas.width;
-        this.y = Math.random()*bgCanvas.height;
-        this.size = Math.random()*2+1;
-        this.alpha = Math.random();
-        this.speed = Math.random()*0.5+0.2;
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 20 + 20;
+        this.opacity = 0;
+        this.grow = true;
+        this.type = Math.floor(Math.random() * 3);
     }
+
+    drawPetals(color, petals) {
+        for (let i = 0; i < petals; i++) {
+            ctx.beginPath();
+            ctx.fillStyle = `rgba(${color},${this.opacity})`;
+            ctx.ellipse(this.x, this.y, this.size, this.size/2, i*Math.PI/(petals/2), 0, Math.PI*2);
+            ctx.fill();
+        }
+    }
+
     update() {
-        this.y -= this.speed;
-        this.alpha -= 0.005;
-        if(this.alpha<=0) this.reset();
-        bgCtx.fillStyle = `rgba(255,255,255,${this.alpha})`;
-        bgCtx.beginPath();
-        bgCtx.arc(this.x,this.y,this.size,0,Math.PI*2);
-        bgCtx.fill();
+        if (this.grow) {
+            this.opacity += 0.02;
+            if (this.opacity >= 0.5) this.grow = false;
+        } else {
+            this.opacity -= 0.01;
+        }
+
+        if (this.opacity <= 0) this.reset();
+
+        if (this.type === 0) this.drawPetals("255,105,180", 12);
+        if (this.type === 1) this.drawPetals("255,140,180", 16);
+        if (this.type === 2) this.drawPetals("255,182,193", 6);
     }
 }
 
-const sparkles=[];
-for(let i=0;i<80;i++) sparkles.push(new Sparkle());
+const flowers = [];
+for (let i = 0; i < 15; i++) flowers.push(new Flower());
 
-function animateBg(){
-    bgCtx.clearRect(0,0,bgCanvas.width,bgCanvas.height);
-    sparkles.forEach(s=>s.update());
-    requestAnimationFrame(animateBg);
+function animate() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    flowers.forEach(f => f.update());
+    requestAnimationFrame(animate);
 }
-animateBg();
+animate();
 
-/* ===== BOTÓN NO IMPOSIBLE ===== */
+/* ====== BOTONES ====== */
 
 const btnNo = document.getElementById('btnNo');
 const btnSi = document.getElementById('btnSi');
@@ -83,8 +77,9 @@ const container = document.querySelector('.buttons-container');
 function moverBoton() {
     const w = container.clientWidth - btnNo.offsetWidth;
     const h = container.clientHeight - btnNo.offsetHeight;
-    btnNo.style.left = Math.random()*w+"px";
-    btnNo.style.top = Math.random()*h+"px";
+
+    btnNo.style.left = Math.random() * w + "px";
+    btnNo.style.top = Math.random() * h + "px";
 }
 
 btnNo.addEventListener('mouseenter', moverBoton);
@@ -97,15 +92,13 @@ btnNo.addEventListener('click', e => {
     moverBoton();
 });
 
-/* ===== BOTÓN SÍ ===== */
-
 btnSi.addEventListener('click', () => {
-    inicial.style.display='none';
-    final.style.display='block';
+    inicial.style.display = 'none';
+    final.style.display = 'block';
 
     confetti({
-        particleCount: 300,
-        spread: 90,
+        particleCount: 200,
+        spread: 80,
         origin: { y: 0.6 }
     });
 });
