@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    background: #ffe6f0;
+    background: linear-gradient(#ffe6f0, #ffd6ec);
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -8,26 +8,62 @@ body {
     height: 100vh;
 }
 
-/* Canvas flores */
-#flowerCanvas {
+/* CANVAS */
+canvas {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 0;
     pointer-events: none;
 }
 
-/* Tarjeta */
-.container {
+/* SOBRE */
+#envelope {
     position: relative;
-    z-index: 10;
+    width: 380px;
+    height: 500px;
+    perspective: 1000px;
+}
+
+.flap {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    background: #ffb6c1;
+    top: 0;
+    transform-origin: top;
+    transition: transform 1s ease;
+    z-index: 5;
+}
+
+.letter {
+    position: absolute;
+    width: 100%;
+    height: 100%;
     background: white;
-    padding: 30px;
     border-radius: 20px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-    width: 350px;
-    min-height: 450px;
-    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    padding: 30px;
+    box-sizing: border-box;
+    transform: translateY(60px);
+    transition: transform 1s ease;
+}
+
+#envelope.shake {
+    animation: shake 0.6s ease;
+}
+
+@keyframes shake {
+    0%,100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+#envelope.open .flap {
+    transform: rotateX(180deg);
+}
+
+#envelope.open .letter {
+    transform: translateY(0);
 }
 
 .main-img {
@@ -39,13 +75,15 @@ h1, h2 {
     font-family: 'Great Vibes', cursive;
     font-size: 32px;
     color: #d63384;
+    text-align: center;
 }
 
 p {
     font-family: 'Poppins', sans-serif;
+    text-align: center;
 }
 
-/* Botones */
+/* BOTONES */
 .buttons-container {
     width: 100%;
     height: 120px;
@@ -62,12 +100,34 @@ button {
     font-family: 'Poppins', sans-serif;
 }
 
+/* BOTÓN SÍ */
 #btnSi {
-    background-color: #ff4d88;
+    background: linear-gradient(45deg, #ff4d88, #ff99cc);
     color: white;
     position: absolute;
     left: 40px;
     top: 40px;
+    overflow: hidden;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+#btnSi::after {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
+    transform: translateX(-100%);
+    animation: shine 2s infinite;
+}
+
+@keyframes shine {
+    100% { transform: translateX(100%); }
 }
 
 #btnNo {
